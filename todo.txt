@@ -1,0 +1,1 @@
+1.) Create buttons diameters, tick sizes etc. for dial sizes N60, N80, N100, N160, N250
