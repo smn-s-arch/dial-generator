@@ -13,10 +13,9 @@ This document provides a concise guide on setting up and building the Dial Gener
 2. Install Dependencies
 
 	create venv
-	1. python -m venv venv
-	2. venv\Scripts\activate
-
-	pip install -r requirements.txt
+	1. `python -m venv venv`
+	2. `venv\Scripts\activate`
+	3. `p install -r requirements.txt`
 
 
 These commands install ReportLab (for PDF generation) and PyInstaller (for creating an executable).
@@ -45,10 +44,11 @@ dial_generator/
 
 	1.	Open Command Prompt in Project Directory
 
-cd path\to\dial_generator
+	cd path\to\dial_generator
 
 
 	2.	Run PyInstaller
-		execute build-windows.sh
+		
+		`build-windows.sh`
 
 5. Run the Application
