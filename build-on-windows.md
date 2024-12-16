@@ -9,15 +9,14 @@ This document provides a concise guide on setting up and building the Dial Gener
 	2.	Run the Installer
 	•	Check “Add Python 3.x to PATH” during installation to ensure you can use Python and pip from the command line.
 
+
 2. Install Dependencies
 
-	1.	Open Command Prompt
-	•	Press Win+R, type cmd, and press Enter.
-	2.	Install Pip Packages
-	•	Install the required libraries:
+	create venv
+	1. python -m venv venv
+	2. venv\Scripts\activate
 
-pip install reportlab
-pip install pyinstaller
+	pip install -r requirements.txt
 
 
 These commands install ReportLab (for PDF generation) and PyInstaller (for creating an executable).
@@ -25,7 +24,6 @@ These commands install ReportLab (for PDF generation) and PyInstaller (for creat
 3. Project Setup
 
 	1.	Project Structure
-Assuming you have a directory structure like:
 
 dial_generator/
     main.py
@@ -51,36 +49,6 @@ cd path\to\dial_generator
 
 
 	2.	Run PyInstaller
-Include the custom font and config file in the build:
-
-pyinstaller --onefile --windowed ^
-    --add-data "src\font\din1451ef.ttf;src\font" ^
-    --add-data "src\config.ini;src" ^
-    main.py
-
-Explanation:
-	•	--onefile produces a single .exe
-	•	--windowed hides the console window when running the GUI
-	•	--add-data "src\font\din1451ef.ttf;src\font" bundles the TTF file inside the executable (on Windows, use a semicolon ; to separate source and destination).
-	•	--add-data "src\config.ini;src" ensures config.ini is included and placed in the src directory at runtime.
-
-	3.	Check Output
-	•	After a successful build, PyInstaller creates a dist folder containing main.exe.
+		execute build-windows.sh
 
 5. Run the Application
-
-	1.	Locate the Executable
-	•	Find main.exe in the dist folder.
-	2.	Launch the Dial Generator
-	•	Double-click main.exe. The GUI should appear, allowing you to configure the dial and generate a PDF.
-
-6. Common Issues & Tips
-
-	•	Missing Files:
-If PyInstaller can’t find din1451ef.ttf or config.ini, verify paths in your command (especially on Windows).
-	•	Paths & Directory Structure:
-Ensure your src folder has an __init__.py if you’re importing as a module.
-	•	Adjusting Dial Settings:
-The final .exe will read config.ini from the embedded resources. You can modify the GUI fields or manually edit config.ini before building if you want default changes.
-
-You have now built a standalone Windows executable for the Dial Generator application!
